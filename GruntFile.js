@@ -2,25 +2,21 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    concat: {
+           dist: {
+             src: [
+               'sass/*.scss',
+             ],
+             dest: 'sass/build.scss',
+           }
+         },
     sass: {
             dist: {
-                options: {
-                    style: 'expanded'
-                },
                 files: {
-                    'styles/styles.css': 'styles/styles.scss'
+                    'css/styles.css': 'scss/main.scss'
                 }
             }
         },
-    concat: {
-      options: {
-        separator: ';'
-      },
-      dist: {
-        src: ['src/**/*.js'],
-        dest: 'dist/<%= pkg.name %>.js'
-      }
-    },
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
@@ -57,8 +53,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
-
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.registerTask('test', ['jshint', 'qunit']);
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['sass']);
 
 };

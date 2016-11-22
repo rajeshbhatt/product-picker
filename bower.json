@@ -1,0 +1,25 @@
+{
+  "name": "pagepicker",
+  "description": "Pagepicker widget",
+  "main": "index.js",
+  "keywords": [
+    "pagepicker",
+    "widget"
+  ],
+  "authors": [
+    "Rajesh"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "normalize.css#^5.0.0"
+  }
+}

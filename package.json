@@ -1,0 +1,20 @@
+{
+  "name": "pagepicker",
+  "version": "1.0.0",
+  "description": "Pagepicker widget",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pagepicker",
+    "widget"
+  ],
+  "author": "Rajesh",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}

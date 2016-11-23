@@ -18,14 +18,14 @@ module.exports = function(grunt) {
             }
         },
     uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-      },
-      dist: {
-        files: {
-          'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+      build: {
+          files: [{
+              expand: true,
+              src: '**/*.js',
+              dest: 'build/scripts',
+              cwd: 'js'
+          }]
         }
-      }
     },
     qunit: {
       files: ['test/**/*.html']
@@ -42,9 +42,21 @@ module.exports = function(grunt) {
         }
       }
     },
+    compress: {
+      main: {
+        options: {
+          mode: 'gzip'
+        },
+        files: [
+          // Each of the files in the src/ folder will be output to
+          // the dist/ folder each with the extension .gz.js
+          {expand: true, src: ['js/*.js'], dest: 'dist/public/js', ext: '.gz.js'}
+        ]
+      }
+    },
     watch: {
       files: ['<%= jshint.files %>'],
-      tasks: ['jshint', 'sass', 'qunit']
+      tasks: [ 'sass']
     }
   });
 
@@ -54,7 +66,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.registerTask('test', ['jshint', 'qunit']);
-  grunt.registerTask('default', ['sass']);
+  grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.registerTask('production', ['jshint', 'qunit','sass','uglify','compress']);
+  grunt.registerTask('default', ['watch']);
 
 };

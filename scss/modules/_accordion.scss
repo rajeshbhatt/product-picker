@@ -1,0 +1,31 @@
+.pe-accordion {
+    
+    li {
+        border-bottom: 1px solid #e9e9e9;
+    }
+
+    a {
+        display: block;
+        position: relative;
+        padding: 8px 16px;
+        text-transform: uppercase;
+        font-size: 12px;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    svg {
+        height: 16px;
+        width: 16px;
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        margin-top: -9px;
+    }
+
+    &-content {
+        display: none;
+    }
+}

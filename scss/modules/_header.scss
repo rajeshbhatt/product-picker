@@ -1,0 +1,24 @@
+.pe-header {
+    height: 45px;
+    line-height: 45px !important;
+    color: #e6e6e6;
+    background: #2c3840;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 20px;
+}
+
+.pe-page-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.0;
+    height: 45px;
+    line-height: 45px !important;   
+    text-transform: uppercase;
+    padding-left: 15px;
+
+    span {
+        font-family: 'Open Sans';
+        font-weight: 300;
+    }
+}

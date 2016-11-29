@@ -1,0 +1,14 @@
+// Bootstrap Overrides
+
+.input-group-addon,
+.form-control {
+    border-radius: 0;
+}
+
+.form-control {
+    
+    &:focus {
+        box-shadow: none;
+        border-color: #8a8a8a;
+    }
+}

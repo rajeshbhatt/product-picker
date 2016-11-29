@@ -1,0 +1,20 @@
+.pe-search {
+    position: relative;
+    margin-bottom: 20px;
+
+    &--input {
+        font: 300 20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+        border: 1px solid #cacaca;
+        padding: 0 0 0 50px;
+        height: 50px;
+    }
+
+    .glyphicon {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        margin-top: -10px;
+        font-size: 20px;
+        z-index: 10;
+    }
+}

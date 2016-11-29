@@ -10,6 +10,7 @@
 	<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
+	<script type="text/javascript" src="./src/js/config.js" ></script>
 </head>
 
 <body>
@@ -28,7 +29,7 @@
 						<div class="input-group col-md-12">
 							<span class="glyphicon glyphicon-search"></span>
 							<label class="hidden" for="">Search By</label>
-							<input type="text" class="form-control input-lg pe-search--input" placeholder="Find a product by category, name, keyword ..."
+							<input type="text" class="form-control input-lg pe-search--input" id="product-search" placeholder="Find a product by category, name, keyword ..."
 							/>
 						</div>
 					</div>
@@ -98,53 +99,53 @@
 							<div class="col-xs-12">
 								<h3 class="pe-browse-category">Category</h3>
 							</div>
-							<ul class="pe-browse-list">
-								<li class="col-sm-2">
+							<ul class="pe-browse-list" id="product-list">
+								<li class="col-sm-2 products product-1">
 									<div class="pe-browse-item">
 										<div class="pe-browse-item-image">
 											<img class="img-responsive" src="http://placehold.it/300/cacaca/333333?text=Image" />
 										</div>
 										<div class="pe-browse-item-title">
-											<p>Product 1</p>
+											<p class='item-title'>Product 1</p>
 										</div>
 										<div class="pe-browse-item-cta">
 											<a class="btn btn-default btn-block" href="javascript:void(0)">Toggle me</a>
 										</div>
 									</div>
 								</li>
-								<li class="col-sm-2">
+								<li class="col-sm-2 products product-1">
 									<div class="pe-browse-item">
 										<div class="pe-browse-item-image">
 											<img class="img-responsive" src="http://placehold.it/300/cacaca/333333?text=Image" />
 										</div>
 										<div class="pe-browse-item-title">
-											<p>Product 1</p>
+											<p class='item-title'>Product 2</p>
 										</div>
 										<div class="pe-browse-item-cta">
 											<a class="btn btn-default btn-block" href="javascript:void(0)">Toggle me</a>
 										</div>
 									</div>
 								</li>
-								<li class="col-sm-2">
+								<li class="col-sm-2 products product-1">
 									<div class="pe-browse-item">
 										<div class="pe-browse-item-image">
 											<img class="img-responsive" src="http://placehold.it/300/cacaca/333333?text=Image" />
 										</div>
 										<div class="pe-browse-item-title">
-											<p>Product 1</p>
+											<p class='item-title'>Product 3</p>
 										</div>
 										<div class="pe-browse-item-cta">
 											<a class="btn btn-default btn-block" href="javascript:void(0)">Toggle me</a>
 										</div>
 									</div>
 								</li>
-								<li class="col-sm-2">
+								<li class="col-sm-2 products product-1">
 									<div class="pe-browse-item">
 										<div class="pe-browse-item-image">
 											<img class="img-responsive" src="http://placehold.it/300/cacaca/333333?text=Image" />
 										</div>
 										<div class="pe-browse-item-title">
-											<p>Product 1</p>
+											<p class='item-title'>Product 4</p>
 										</div>
 										<div class="pe-browse-item-cta">
 											<a class="btn btn-default btn-block" href="javascript:void(0)">Toggle me</a>
@@ -165,6 +166,10 @@
 			<div class="pe-drawer-footer"></div>
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="./src/js/search/index.js" ></script>
 </body>
 
 </html>

@@ -24,26 +24,41 @@
         }
     }
 
+    &-list {
+        margin-left: -20px;   
+        &-item {
+            // width: 24.545%;
+            width: 19.545%;
+            display: inline-block;
+            padding: 0 0 20px 20px;
+            transition: all 800ms cubic-bezier(0,0,.58,1) 0ms;
+        }
+    }
+
     &-item {
-        border: 1px solid #e6e6e6;
-        text-align: center;
+        border: 1px solid #D2D6D5;
+        padding: 10px;
+        transition: border-color .75s;
+
+        &:hover {
+            border-color: #3c948b;
+        }
 
         &-image {
             margin-bottom: 10px;
         }
 
         &-title {
-            padding: 0 10px;
             margin-bottom: 20px;
-            font-size: 18px;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         &-cta {
             .btn {
-                background: #e6e6e6;
+                background: #e1e3e4;
                 border:0;
                 border-radius: 0;
-                border-top: 1px solid #e6e6e6;
                 font-size: 12px;
                 text-transform: uppercase;
                 font-weight: 600;

@@ -21,22 +21,27 @@
 
         // Bind Events
         _self.bindEvents = function () {
-            $(_self.handlers.accordionHandle).on('click', _self.onAccordionHandlerClick());
+            $(_self.handlers.accordionHandle).on('click', function () {
+                var handler = $(this),
+                    contentPanel = handler.next(_self.handlers.accordionContentPanel);
+                if (handler.hasClass('is-active')) {
+                    contentPanel.slideUp();
+                } else {
+                    if (_self.options.toggle) {
+                        $(_self.handlers.accordionContentPanel).removeClass('is-open').slideUp();
+                        $(_self.handlers.accordionHandle).removeClass('is-active');
+                        handler.addClass('is-active')
+                        contentPanel.addClass('is-open').slideDown();
+                    } else {
+                        contentPanel.addClass('is-open').slideDown();
+                    }
+                }
+            });
         };
 
         // Accordion Handler Click
-        _self.onAccordionHandlerClick = function () {
-            var handler = $(context),
-                contentPanel = $(context).next('.' + _self.handlers.accordionContentPanel);
-            if (handler.hasClass('is-open')) {
-                contentPanel.slideUp();
-            } else {
-                if (_self.options.toggle) {
-                    $('.' + _self.handlers.accordionContentPanel).removeClass('is-open').slideUp();
-                } else {
-                    contentPanel.addClass('is-open').slideDown();
-                }
-            }
+        _self.onAccordionHandlerClick = function (context) {
+
         };
 
         // Initialize

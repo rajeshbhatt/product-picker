@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   text-decoration: none; }
-  a:hover {
+  a:hover, a:focus {
     text-decoration: none; }
 
 .pe-aside {
@@ -71,7 +71,7 @@ a {
   padding: 8px 16px;
   text-transform: uppercase;
   font-size: 12px; }
-  .pe-accordion a:hover {
+  .pe-accordion a:hover, .pe-accordion a.is-active {
     background: rgba(0, 0, 0, 0.05); }
 .pe-accordion svg {
   height: 16px;
@@ -82,6 +82,11 @@ a {
   margin-top: -9px; }
 .pe-accordion-content {
   display: none; }
+  .pe-accordion-content .pe-subcategory {
+    font-size: 16px;
+    border-bottom: 1px solid #e9e9e9; }
+    .pe-accordion-content .pe-subcategory li {
+      padding: 8px 20px 8px 40px; }
 .pe-accordion-item--title {
   text-transform: uppercase;
   color: #999;

@@ -93,12 +93,10 @@ a {
       text-transform: uppercase;
       position: relative; }
       .pe-accordion-content .pe-subcategory a::before {
-        font-family: "Glyphicons Halflings";
+        font: normal 10px "Glyphicons Halflings";
         position: absolute;
-        left: 10px;
-        content: '\e250';
-        height: 10px;
-        width: 10px; }
+        left: 22px;
+        content: '\e250'; }
 .pe-accordion-item--title {
   text-transform: uppercase;
   color: #999;
@@ -185,5 +183,23 @@ a {
       color: #fff;
       right: 10px;
       margin-top: -9px; }
+  .pe-drawer-content {
+    background: #fff;
+    padding: 20px; }
+  .pe-drawer .pe-drawer-items--item {
+    display: inline-block;
+    padding: 5px 10px 5px 15px;
+    background: #eee;
+    border-radius: 20px; }
+    .pe-drawer .pe-drawer-items--item span {
+      display: inline-block;
+      color: #333132; }
+    .pe-drawer .pe-drawer-items--item span + span {
+      border-radius: 50%;
+      border: 1px solid #ff5252;
+      padding: 3px;
+      color: #ff5252;
+      margin-left: 10px;
+      cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,5 +1,4 @@
 .pe-drawer {
-    
     position: fixed;
     bottom: 0;
     width: 80%;
@@ -33,5 +32,31 @@
         }
     }
 
+    &-content {
+        background: #fff;
+        padding: 20px;
+    }
+
+    // Product List Item
+    .pe-drawer-items--item {
+        display: inline-block;
+        padding: 5px 10px 5px 15px;
+        background: #eee;
+        border-radius: 20px;
+        
+        span {
+            display: inline-block;
+            color: #333132;
+        }
+
+        span + span {
+            border-radius: 50%;
+            border: 1px solid #ff5252;
+            padding: 3px;
+            color: #ff5252;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    }
 
 }

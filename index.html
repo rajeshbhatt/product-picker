@@ -161,15 +161,32 @@
 	</div>
 	<div class="pe-drawer">
 		<div class="pe-drawer-collection">
-			<div class="pe-drawer-header">{ 2 } Products Selected <span class="glyphicon glyphicon-plus"></span></div>
-			<div class="pe-drawer-content"></div>
+			<script type="text/template" class="template">
+				<div class="pe-drawer-header">{ 2 } Products Selected <span class="glyphicon glyphicon-plus"></span></div>
+				<div class="pe-drawer-content">
+					<ul>
+					  <% _.each( pp.listItems, function( listItem ){ %>
+						<li class="clearfix">
+							<a class="col-lg-6 pull-left">
+								<span><%- listItem.name %> </span>
+							</a>
+							<a class="col-lg-2 pull-right popup-delete" data-productInfo="<%- listItem.name %>">
+								<span> Delete </span>
+							</a>
+						</li>
+						 <% }); %>
+					</ul>
+				</div>
+		</script>
 			<div class="pe-drawer-footer"></div>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
-
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+	<script type="text/javascript" src="./src/js/common.js" ></script>
 	<script type="text/javascript" src="./src/js/search/index.js" ></script>
+	<script type="text/javascript" src="./src/js/toggle.js" ></script>
 </body>
 
 </html>

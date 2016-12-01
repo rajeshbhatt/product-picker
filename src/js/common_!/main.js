@@ -1,10 +1,3 @@
-// var test = function(){
-//   alert('hi');
-// }
-//
-// module.exports = test;
-// alert('incommingf')
-
 var getData = function(options){
   $.ajax({
   method: "POST",

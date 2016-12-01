@@ -1,7 +1,15 @@
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const PATHS = {
+  app: path.join(__dirname, 'app'),
+  build: path.join(__dirname, 'build')
+};
+console.log(PATHS);
 module.exports = {
   entry: './src/js/main.js',
   output: {
-    path: 'dist',
+    path: PATHS.build,
     filename: 'bundle.js'
   },
 
@@ -20,5 +28,10 @@ module.exports = {
         loader: 'style-loader!css-loader!sass-loader'
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Webpack demo'
+    })
+  ]
 }

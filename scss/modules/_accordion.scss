@@ -26,11 +26,25 @@
         display: none;
 
         .pe-subcategory {
-            font-size: 16px;
             border-bottom: 1px solid #e9e9e9;
             
-            li {
-                padding: 8px 20px 8px 40px;
+            .pe-subcategory--list {
+                margin: 10px 0;
+            }
+
+            a {
+                font-size: 12px;
+                display: block;
+                padding: 5px 20px 5px 40px;
+                text-transform: uppercase;
+                position: relative;
+
+                &::before {
+                    font: normal 10px "Glyphicons Halflings";
+                    position: absolute;
+                    left: 22px;
+                    content: '\e250';               
+                }
             }
         }
     }

@@ -1,5 +1,5 @@
-(function(module, config) {
-    module.accordion = function() {
+(function (module, config) {
+    module.accordion = function () {
 
         var _self = this;
 
@@ -12,8 +12,8 @@
         // DOM Handlers
         _self.handlers = {
             accordionPanel: "",
-            accordionContentPanel: "pe-accordion-content",
-            accordionHandle: "pe-accordion-h"
+            accordionContentPanel: ".pe-accordion-content",
+            accordionHandle: ".pe-accordion-h"
         };
 
         // Module Settings
@@ -21,18 +21,18 @@
 
         // Bind Events
         _self.bindEvents = function () {
-            $('.' + this.handlers.accordionHandle).on('click', onAccordionHandlerClick(this));
+            $(_self.handlers.accordionHandle).on('click', _self.onAccordionHandlerClick());
         };
 
         // Accordion Handler Click
-        _self.onAccordionHandlerClick = function(context) {
-            var handler = $(conntext),
-                contentPanel = $(conntext).next('.' + pe-accordion-content); 
-            if(handler.hasClass('is-open')) {
+        _self.onAccordionHandlerClick = function () {
+            var handler = $(context),
+                contentPanel = $(context).next('.' + _self.handlers.accordionContentPanel);
+            if (handler.hasClass('is-open')) {
                 contentPanel.slideUp();
             } else {
-                if(_self.options.toggle) {
-                    $('.' + pe-accordion-content).removeClass('is-open').slideUp();
+                if (_self.options.toggle) {
+                    $('.' + _self.handlers.accordionContentPanel).removeClass('is-open').slideUp();
                 } else {
                     contentPanel.addClass('is-open').slideDown();
                 }
@@ -40,11 +40,11 @@
         };
 
         // Initialize
-        _self.init = function() {
+        _self.init = function () {
             _self.bindEvents();
         };
 
         // return
-        return init();
+        return _self.init();
     }
-}(picker || {}, picker.config || {}));
+} (picker || {}, picker.config || {}));

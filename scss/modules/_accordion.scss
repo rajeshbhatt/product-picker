@@ -43,7 +43,9 @@
                     font: normal 10px "Glyphicons Halflings";
                     position: absolute;
                     left: 22px;
-                    content: '\e250';               
+                    top: 50%;
+                    content: '\e250';
+                    margin-top: -6px;              
                 }
             }
         }

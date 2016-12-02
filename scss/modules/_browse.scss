@@ -1,11 +1,12 @@
 .pe-browse {
     &-category {
-        font-size: 40px;
+        font-size: 34px;
         line-height: 1.4;
         margin-bottom: 25px;
         border-bottom: 2px solid #cacaca;
         position: relative;
         display: inline-block;
+        text-transform: uppercase;
 
         &:before {
             border-style: solid;

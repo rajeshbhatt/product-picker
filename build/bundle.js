@@ -68,10 +68,17 @@
 
 	var _Accordian2 = _interopRequireDefault(_Accordian);
 
+	var _Utility = __webpack_require__(8);
+
+	var _Utility2 = _interopRequireDefault(_Utility);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+	var utility = new _Utility2.default();
+
+	console.log('Utility', _Utility2.default);
 	// import Utility from 'Utility';
 
 	var ProductPicker = function () {
@@ -81,17 +88,62 @@
 	    this.options = options || {};
 	    this.target = target;
 	    this.cb = cb;
+	    this.target = this.data = {
+	      "products": [{
+	        "name": "product1",
+	        "id": "product_1",
+	        "imgUrl": {
+	          "320": "abc.jpg",
+	          "760": "abc.jpg",
+	          "1000": "abc.jpg",
+	          "default": "abc.jpg"
+	        },
+	        "additionalInfo": ""
+	      }, {
+	        "name": "product 2",
+	        "id": "product_2",
+	        "imgUrl": {
+	          "320": "abc.jpg",
+	          "760": "abc.jpg",
+	          "1000": "abc.jpg",
+	          "default": "abc.jpg"
+	        },
+	        "additionalInfo": ""
+	      }, {
+	        "name": "product 3",
+	        "id": "product_3",
+	        "imgUrl": {
+	          "320": "abc.jpg",
+	          "760": "abc.jpg",
+	          "1000": "abc.jpg",
+	          "default": "abc.jpg"
+	        },
+	        "additionalInfo": ""
+	      }]
+	    };
 	  }
 
 	  _createClass(ProductPicker, [{
 	    key: 'create',
 	    value: function create() {
-	      console.log('return');
+	      console.log('return', this.data);
+	      var options = options || {},
+	          src = src || '',
+	          target = target || '';
+	      options.url = 'D:/workspace/product-picker_1/product-picker/src/data/getProductDetails.json';
+	      options.cb = this.render;
+	      // utility.getData(options);
+	      this.render(this.data);
 	    }
 	  }, {
 	    key: 'render',
-	    value: function render(options, src, target) {
+	    value: function render(options, data, src, target) {
 	      // render template
+	      console.log('options', options, data);
+	      _lodash2.default.templateSettings.variable = "pp";
+	      var template = _lodash2.default.template((0, _jquery2.default)("script.template").html());
+	      console.log('render');
+	      (0, _jquery2.default)("#product-container-main").after(template(this.data));
 	    }
 	  }, {
 	    key: 'destroy',
@@ -108,7 +160,9 @@
 	  // console.log('sssssss',new CONFIG());
 	  window.PPICKER = window.PPICKER || {};
 	  window.PPICKER = new _Config2.default() || {};
-	  var aa = new ProductPicker(); // it will be used as to append in dom and other configuration options
+	  // var utility = new Utility();
+	  var mainInstance = new ProductPicker(); // it will be used as to append in dom and other configuration options
+	  mainInstance.create();
 	  new _search2.default().init();
 	  new _Accordian2.default().init();
 	});
@@ -11373,7 +11427,6 @@
 	  _createClass(Accordian, [{
 	    key: "accordionAction",
 	    value: function accordionAction(e) {
-	      console.log('accordian action', e.target);
 	      var handler = $(e.target).closest('a'),
 	          // this is changed to object
 	      contentPanel = handler.next(this.handlers.accordionContentPanel);
@@ -11407,6 +11460,53 @@
 	}();
 
 	exports.default = Accordian;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Utility = function () {
+	  function Utility() {
+	    _classCallCheck(this, Utility);
+	  }
+
+	  _createClass(Utility, [{
+	    key: 'getData',
+	    value: function getData(options) {
+	      //ajax call
+	      $.ajax({
+	        url: options.url,
+	        data: {
+	          format: 'json'
+	        },
+	        error: function error() {
+	          //err
+	        },
+	        success: function success(data) {
+	          consle.log(data);
+	          if (options.cb) {
+	            cb(options, data);
+	          }
+	        },
+	        type: 'GET'
+	      });
+	    }
+	  }]);
+
+	  return Utility;
+	}();
+
+	exports.default = Utility;
 
 /***/ }
 /******/ ]);

@@ -1,5 +1,5 @@
-(function(module, config) {
-    module.accordion = function() {
+(function (module, config) {
+    module.accordion = function () {
 
         var _self = this;
 
@@ -20,8 +20,8 @@
         _self.options = $.extend({}, this.config, config);
 
         // Bind Events
-        _self.bindEvents = function() {
-            $(_self.handlers.accordionHandle).on('click', function() {
+        _self.bindEvents = function () {
+            $(_self.handlers.accordionHandle).on('click', function () {
                 var handler = $(this),
                     contentPanel = handler.next(_self.handlers.accordionContentPanel);
                 if (handler.hasClass('is-active')) {
@@ -41,12 +41,12 @@
         };
 
         // Accordion Handler Click
-        _self.onAccordionHandlerClick = function(context) {
+        _self.onAccordionHandlerClick = function (context) {
 
         };
 
         // Initialize
-        _self.init = function() {
+        _self.init = function () {
             _self.bindEvents();
         };
 

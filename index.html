@@ -53,11 +53,16 @@
 
 									</a>
 									<div class="pe-accordion-content">
-										<ul class="pe-subcategory">
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-										</ul>
+										<div class="pe-subcategory">
+											<ul class="pe-subcategory--list">
+												<li class="pe-subcategory--item">
+													<a class="pe-subcategory--link" href="javascript:void(0)">Sub Category</a>
+												</li>
+												<li class="pe-subcategory--list-item">
+													<a class="pe-subcategory--link" href="javascript:void(0)">Sub Category</a>
+												</li>
+											</ul>
+										</div>
 									</div>
 								</li>
 								<li>
@@ -73,10 +78,16 @@
 
 									</a>
 									<div class="pe-accordion-content">
-										<ul class="pe-subcategory">
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-										</ul>
+										<div class="pe-subcategory">
+											<ul class="pe-subcategory--list">
+												<li class="pe-subcategory--item">
+													<a class="pe-subcategory--link" href="javascript:void(0)">Sub Category</a>
+												</li>
+												<li class="pe-subcategory--list-item">
+													<a class="pe-subcategory--link" href="javascript:void(0)">Sub Category</a>
+												</li>
+											</ul>
+										</div>
 									</div>
 								</li>
 								<li>
@@ -92,14 +103,16 @@
 
 									</a>
 									<div class="pe-accordion-content">
-										<ul class="pe-subcategory">
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-										</ul>
+										<div class="pe-subcategory">
+											<ul class="pe-subcategory--list">
+												<li class="pe-subcategory--item">
+													<a class="pe-subcategory--link" href="javascript:void(0)">Sub Category</a>
+												</li>
+												<li class="pe-subcategory--list-item">
+													<a class="pe-subcategory--link" href="javascript:void(0)">Sub Category</a>
+												</li>
+											</ul>
+										</div>
 									</div>
 								</li>
 							</ul>
@@ -200,16 +213,36 @@
 			</div>
 		</div>
 	</div>
-	<div class="pe-drawer">
-		<div class="pe-drawer-collection">
-			<div class="pe-drawer-header">{ 2 } Products Selected <span class="glyphicon glyphicon-plus"></span></div>
-			<div class="pe-drawer-content"></div>
-			<div class="pe-drawer-footer"></div>
+	<div class="pe-drawer pe-drawer--collection">
+		<div class="pe-drawer--collection-wrapper">
+			<div class="pe-drawer--collection-header pe-collection-drawer-h">
+				<span class="pe-variant--count">2</span>
+				<span class="pe-variant--text">Products Selected</span>
+			</div>
+			<div class="pe-drawer--collection-content">
+				<ul class="pe-drawer--collection-items--list">
+					<li class="pe-drawer--collection-items--item">
+						<span class="pe-drawer--collection-items--item-name">Product</span>
+						<span class="glyphicon glyphicon-minus pe-delete-h"></span>
+					</li>
+					<li class="pe-drawer--collection-items--item">
+						<span class="pe-drawer--collection-items--item-name">Product Name</span>
+						<span class="glyphicon glyphicon-minus pe-delete-h"></span>
+					</li>
+					<li class="pe-drawer--collection-items--item">
+						<span class="pe-drawer--collection-items--item-name">Product name long</span>
+						<span class="glyphicon glyphicon-minus pe-delete-h"></span>
+					</li>
+				</ul>
+			</div>
+			<div class="pe-drawer--collection-footer"></div>
 		</div>
 	</div>
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/module.accordion.js"></script>
+	<script src="js/module.drawer.js"></script>
+	<script src="js/utility.js"></script>
 </body>
 
 </html>

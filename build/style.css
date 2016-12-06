@@ -146,66 +146,32 @@ a {
     .pe-browse-item-cta .btn:hover {
       background: #dedede; }
 
-.pe-drawer--collection {
-  background: #fff;
+.pe-drawer {
   position: fixed;
   bottom: 0;
-  width: 80%;
-  -webkit-transform: translateY(100%);
-  transform: translateY(100%); }
-  .pe-drawer--collection-wrapper {
+  width: 80%; }
+  .pe-drawer-collection {
+    -webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
     max-height: 600px;
     width: 50%;
     -webkit-transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
     transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
-    -webkit-transform: translateY(-42px);
-    transform: translateY(-42px); }
-    .pe-drawer--collection-wrapper.is-open {
-      -webkit-transform: translateY(-100%);
-      transform: translateY(-100%);
-      -webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
-      box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12); }
-      .pe-drawer--collection-wrapper.is-open .pe-drawer--collection-header::after {
-        content: "\2212"; }
-  .pe-drawer--collection-header {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
+  .pe-drawer-header {
     background: #2c3840;
     padding: 8px 16px;
     color: #fff;
     font-size: 14px;
-    position: relative;
-    cursor: pointer; }
-    .pe-drawer--collection-header::after {
-      font: normal 10px "Glyphicons Halflings";
+    position: relative; }
+    .pe-drawer-header .glyphicon {
       position: absolute;
       top: 50%;
       font-size: 18px;
       font-weight: 300;
       color: #fff;
-      content: "\002b";
       right: 10px;
-      margin-top: -11px; }
-  .pe-drawer--collection-content {
-    background: #fff;
-    padding: 20px; }
-  .pe-drawer--collection-items--item {
-    display: inline-block;
-    padding: 5px 10px 5px 15px;
-    background: #eee;
-    border-radius: 20px; }
-    .pe-drawer--collection-items--item span {
-      display: inline-block;
-      color: #333132; }
-    .pe-drawer--collection-items--item span + span {
-      border-radius: 50%;
-      border: 1px solid #ff5252;
-      padding: 3px;
-      color: #ff5252;
-      margin-left: 10px;
-      cursor: pointer; }
-
-.pe-variant--count {
-  color: #ff6e40;
-  margin-right: 7px;
-  font-weight: 600; }
+      margin-top: -9px; }
 
 /*# sourceMappingURL=style.css.map */

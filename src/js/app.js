@@ -1,12 +1,13 @@
 import $ from 'jquery';
 import _ from 'lodash';
 import CONFIG from './Config'
-import Search from './search';
+import Search from './Search';
 import Accordian from './Accordian';
 import Utility from './Utility';
+import Drawer from './Drawer';
 var utility = new Utility();
 
-console.log('Utility',Utility);
+console.log('Utility',$);
 // import Utility from 'Utility';
 
 class ProductPicker {
@@ -91,6 +92,7 @@ $(function() {
     mainInstance.create();
     new Search().init();
     new Accordian().init();
+    new Drawer().init();
 
 });
 

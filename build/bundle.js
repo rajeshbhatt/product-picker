@@ -1,6 +1,34 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	var parentJsonpFunction = window["webpackJsonp"];
+/******/ 	window["webpackJsonp"] = function webpackJsonpCallback(chunkIds, moreModules) {
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, callbacks = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId])
+/******/ 				callbacks.push.apply(callbacks, installedChunks[chunkId]);
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			modules[moduleId] = moreModules[moduleId];
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(chunkIds, moreModules);
+/******/ 		while(callbacks.length)
+/******/ 			callbacks.shift().call(null, __webpack_require__);
+
+/******/ 	};
+
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// "0" means "already loaded"
+/******/ 	// Array means "loading", array contains callbacks
+/******/ 	var installedChunks = {
+/******/ 		0:0
+/******/ 	};
 
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -26,6 +54,29 @@
 /******/ 		return module.exports;
 /******/ 	}
 
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId, callback) {
+/******/ 		// "0" is the signal for "already loaded"
+/******/ 		if(installedChunks[chunkId] === 0)
+/******/ 			return callback.call(null, __webpack_require__);
+
+/******/ 		// an array means "currently loading".
+/******/ 		if(installedChunks[chunkId] !== undefined) {
+/******/ 			installedChunks[chunkId].push(callback);
+/******/ 		} else {
+/******/ 			// start chunk loading
+/******/ 			installedChunks[chunkId] = [callback];
+/******/ 			var head = document.getElementsByTagName('head')[0];
+/******/ 			var script = document.createElement('script');
+/******/ 			script.type = 'text/javascript';
+/******/ 			script.charset = 'utf-8';
+/******/ 			script.async = true;
+
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + ".bundle.js";
+/******/ 			head.appendChild(script);
+/******/ 		}
+/******/ 	};
 
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -60,17 +111,21 @@
 
 	var _Config2 = _interopRequireDefault(_Config);
 
-	var _search = __webpack_require__(6);
+	var _Search = __webpack_require__(9);
 
-	var _search2 = _interopRequireDefault(_search);
+	var _Search2 = _interopRequireDefault(_Search);
 
-	var _Accordian = __webpack_require__(7);
+	var _Accordian = __webpack_require__(13);
 
 	var _Accordian2 = _interopRequireDefault(_Accordian);
 
-	var _Utility = __webpack_require__(8);
+	var _Utility = __webpack_require__(10);
 
 	var _Utility2 = _interopRequireDefault(_Utility);
+
+	var _Drawer = __webpack_require__(8);
+
+	var _Drawer2 = _interopRequireDefault(_Drawer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -78,7 +133,7 @@
 
 	var utility = new _Utility2.default();
 
-	console.log('Utility', _Utility2.default);
+	console.log('Utility', _jquery2.default);
 	// import Utility from 'Utility';
 
 	var ProductPicker = function () {
@@ -163,8 +218,9 @@
 	  // var utility = new Utility();
 	  var mainInstance = new ProductPicker(); // it will be used as to append in dom and other configuration options
 	  mainInstance.create();
-	  new _search2.default().init();
+	  new _Search2.default().init();
 	  new _Accordian2.default().init();
+	  new _Drawer2.default().init();
 	});
 
 	module.exports = ProductPicker;
@@ -11287,7 +11343,7 @@
 
 /***/ },
 /* 5 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -11295,20 +11351,148 @@
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _AsyncLoader = __webpack_require__(6);
+
+	var _AsyncLoader2 = _interopRequireDefault(_AsyncLoader);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Config = function Config() {
-	  _classCallCheck(this, Config);
+	var Config = function () {
+	  function Config() {
+	    _classCallCheck(this, Config);
 
-	  this.searchDrilDown = false;
-	  this.searchType = '';
-	};
+	    this.searchDrilDown = false;
+	    this.searchType = '';
+	    this.mData = [];
+	  }
+
+	  _createClass(Config, [{
+	    key: 'pushData',
+	    value: function pushData(a, b) {
+	      this.mData.push(a);
+	    }
+	  }, {
+	    key: 'load',
+	    value: function load() {
+	      var selectedModules = ['Accordian', 'Drawer', 'Search'];
+	      var obj = {};
+	      var _this = this;
+	      // require(['./Accordian','./Drawer','./Search'], function(a,b,c){
+	      //   console.log('aaaa',a);
+	      // })
+	      // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',AsyncLoader);
+	      selectedModules.map(function (module, i) {
+	        console.log('module...', module);
+	        obj[i] = new _AsyncLoader2.default(module);
+	      });
+	      console.log('ojbbb', obj, obj.Accordian);
+	    }
+	  }]);
+
+	  return Config;
+	}();
 
 	exports.default = Config;
 	;
+	new Config().load();
 
 /***/ },
 /* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var AsyncLoader = function AsyncLoader(expr, callback) {
+	  _classCallCheck(this, AsyncLoader);
+
+	  console.log('sssss', expr);
+	  __webpack_require__.e/* require */(1, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(7)("./" + expr + ".js")]; (function (result) {
+	    callback(null, result);
+	  }.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	};
+
+	exports.default = AsyncLoader;
+
+/***/ },
+/* 7 */,
+/* 8 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Drawer = function () {
+	    function Drawer(config) {
+	        _classCallCheck(this, Drawer);
+
+	        this.config = {
+	            position: 'bottom'
+	        };
+
+	        // DOM Handlers
+	        this.domHandlers = {
+	            drawerPanel: "",
+	            drawerHandle: ".pe-collection-drawer-h",
+	            deleteItemHandler: ".pe-delete-h"
+	        };
+
+	        // Module Settings
+	        this.options = $.extend({}, this.config, config);
+	    }
+
+	    _createClass(Drawer, [{
+	        key: "bindEvents",
+	        value: function bindEvents() {
+	            $(this.domHandlers.drawerHandle).on('click', this.animateDrawerPopup);
+	            $(this.domHandlers.deleteItemHandler).on('click', this.deleteItem);
+	        }
+	    }, {
+	        key: "animateDrawerPopup",
+
+
+	        // Popup Handler
+	        value: function animateDrawerPopup() {
+	            $(this).parent().toggleClass('is-open');
+	        }
+	    }, {
+	        key: "deleteItem",
+	        value: function deleteItem() {
+	            $(this).parent().remove();
+	        }
+	    }, {
+	        key: "init",
+
+
+	        // Initialize
+	        value: function init() {
+	            this.bindEvents();
+	        }
+	    }]);
+
+	    return Drawer;
+	}();
+
+	exports.default = Drawer;
+
+/***/ },
+/* 9 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -11395,7 +11579,56 @@
 	exports.default = Search;
 
 /***/ },
-/* 7 */
+/* 10 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Utility = function () {
+	  function Utility() {
+	    _classCallCheck(this, Utility);
+	  }
+
+	  _createClass(Utility, [{
+	    key: 'getData',
+	    value: function getData(options) {
+	      //ajax call
+	      $.ajax({
+	        url: options.url,
+	        data: {
+	          format: 'json'
+	        },
+	        error: function error() {
+	          //err
+	        },
+	        success: function success(data) {
+	          consle.log(data);
+	          if (options.cb) {
+	            cb(options, data);
+	          }
+	        },
+	        type: 'GET'
+	      });
+	    }
+	  }]);
+
+	  return Utility;
+	}();
+
+	exports.default = Utility;
+
+/***/ },
+/* 11 */,
+/* 12 */,
+/* 13 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -11460,53 +11693,6 @@
 	}();
 
 	exports.default = Accordian;
-
-/***/ },
-/* 8 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var Utility = function () {
-	  function Utility() {
-	    _classCallCheck(this, Utility);
-	  }
-
-	  _createClass(Utility, [{
-	    key: 'getData',
-	    value: function getData(options) {
-	      //ajax call
-	      $.ajax({
-	        url: options.url,
-	        data: {
-	          format: 'json'
-	        },
-	        error: function error() {
-	          //err
-	        },
-	        success: function success(data) {
-	          consle.log(data);
-	          if (options.cb) {
-	            cb(options, data);
-	          }
-	        },
-	        type: 'GET'
-	      });
-	    }
-	  }]);
-
-	  return Utility;
-	}();
-
-	exports.default = Utility;
 
 /***/ }
 /******/ ]);

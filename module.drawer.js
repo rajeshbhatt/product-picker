@@ -1,6 +1,8 @@
 (function(module, config) {
+    var $ = picker.$;
     module.drawer = function() {
         var _self = this;
+
         // Default Configurations
         _self.config = {
             position: 'bottom'
@@ -14,8 +16,8 @@
         };
 
         // Module Settings
-        if(config)
-            _self.options = $.extend({}, this.config, config);
+         if(config)
+        _self.options = $.extend({}, this.config, config);
 
         // Bind Events
         _self.bindEvents = function() {

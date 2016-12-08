@@ -1,6 +1,6 @@
 body {
-  font: normal 16px/26px 'Open Sans', sans-serif;
-  background-color: #F4F4F4; }
+  font: normal 16px/26px 'Roboto', sans-serif;
+  background: #f4f7f6; }
 
 ul, li, p {
   padding: 0;
@@ -16,9 +16,6 @@ a {
   text-decoration: none; }
   a:hover, a:focus {
     text-decoration: none; }
-
-.pe-aside {
-  background: #fafafa; }
 
 .input-group-addon,
 .form-control {
@@ -61,9 +58,10 @@ a {
   margin: 60px 0 20px; }
   .pe-search--input {
     font: 300 20px "Helvetica Neue",Helvetica,Arial,sans-serif;
-    border: 1px solid #cacaca;
+    border: 1px solid #DBE0DF;
     padding: 0 0 0 50px;
-    height: 50px; }
+    height: 50px;
+    box-shadow: none; }
   .pe-search .glyphicon {
     position: absolute;
     top: 50%;
@@ -77,9 +75,11 @@ a {
   position: relative;
   padding: 8px 16px;
   text-transform: uppercase;
-  font-size: 12px; }
+  font-size: 12px;
+  border-bottom: 1px solid #E6EAEA;
+  color: #202121; }
   .pe-accordion a:hover, .pe-accordion a.is-active {
-    background: rgba(0, 0, 0, 0.05); }
+    background: #fcfcfc; }
 .pe-accordion svg {
   height: 16px;
   width: 16px;
@@ -98,7 +98,8 @@ a {
       display: block;
       padding: 5px 20px 5px 40px;
       text-transform: uppercase;
-      position: relative; }
+      position: relative;
+      border: none; }
       .pe-accordion-content .pe-subcategory a::before {
         font: normal 10px "Glyphicons Halflings";
         position: absolute;
@@ -111,60 +112,69 @@ a {
   color: #999;
   font-weight: bold;
   line-height: 1;
-  border-bottom: 1px solid #e9e9e9;
+  border-bottom: 2px solid #E6EAEA;
   font-size: 12px;
-  padding: 20px 16px 15px; }
+  padding: 20px 16px 15px;
+  letter-spacing: 1px; }
 
-.pe-browse-category {
-  font-size: 34px;
-  line-height: 1.4;
-  margin-bottom: 25px;
-  border-bottom: 2px solid #cacaca;
-  position: relative;
-  display: inline-block;
-  text-transform: uppercase; }
-  .pe-browse-category:before {
-    border-style: solid;
-    border-width: 5px 4px 0;
-    border-color: #cacaca transparent transparent;
-    background: transparent none repeat scroll 0 0;
-    bottom: -7px;
-    content: "";
+.pe-browse {
+  padding: 10px 20px 60px; }
+  .pe-browse-category {
+    font-size: 26px;
+    line-height: 1.4;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #202121;
+    position: relative;
     display: inline-block;
-    height: 0;
-    position: absolute;
-    right: 0;
-    top: auto;
-    width: 0;
-    z-index: 2; }
-.pe-browse-list {
-  margin-left: -20px; }
-  .pe-browse-list-item {
-    width: 19.545%;
-    display: inline-block;
-    padding: 0 0 20px 20px;
-    transition: all 800ms cubic-bezier(0, 0, 0.58, 1) 0ms; }
-.pe-browse-item {
-  border: 1px solid #D2D6D5;
-  padding: 10px;
-  transition: border-color .75s; }
-  .pe-browse-item:hover {
-    border-color: #3c948b; }
-  .pe-browse-item-image {
-    margin-bottom: 10px; }
-  .pe-browse-item-title {
-    margin-bottom: 20px;
-    font-size: 16px;
-    font-weight: 600; }
-  .pe-browse-item-cta .btn {
-    background: #e1e3e4;
-    border: 0;
-    border-radius: 0;
-    font-size: 12px;
     text-transform: uppercase;
-    font-weight: 600; }
-    .pe-browse-item-cta .btn:hover {
-      background: #dedede; }
+    color: #202121; }
+    .pe-browse-category:before {
+      border-style: solid;
+      border-width: 5px 4px 0;
+      border-color: #202121 transparent transparent;
+      background: transparent none repeat scroll 0 0;
+      bottom: -7px;
+      content: "";
+      display: inline-block;
+      height: 0;
+      position: absolute;
+      right: 0;
+      top: auto;
+      width: 0;
+      z-index: 2; }
+  .pe-browse-list {
+    margin-left: -20px; }
+    .pe-browse-list-item {
+      width: 19.545%;
+      display: inline-block;
+      padding: 0 0 20px 20px;
+      transition: all 800ms cubic-bezier(0, 0, 0.58, 1) 0ms; }
+  .pe-browse-item {
+    border: 1px solid #D2D6D5;
+    padding: 10px;
+    transition: border-color .75s;
+    background: #fff; }
+    .pe-browse-item:hover {
+      border-color: #3c948b; }
+    .pe-browse-item-image {
+      margin-bottom: 10px; }
+    .pe-browse-item-title {
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #202121;
+      text-transform: uppercase; }
+    .pe-browse-item-cta .btn {
+      color: #fff;
+      background: #42AB9E;
+      border: 0;
+      border-radius: 0;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 10px 0; }
+      .pe-browse-item-cta .btn:hover {
+        background-color: #389c90; }
 
 .pe-drawer--collection {
   background: #fff;

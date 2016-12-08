@@ -113,12 +113,18 @@
                     if (picker.accordion) new picker.accordion();
                 }
 
+                if(this.fName === 'search' && picker.search){
+                    new picker.search();
+
+                }
+
             }
 
             function loadExtFile(){
                 var jsScript = {
                     widgetCore: './core.js',
                     accordian: './module.accordion.js',
+                    search: './module.search.js',
                     drawer: 'module.drawer.js'
                 };
                 for(var file in jsScript){

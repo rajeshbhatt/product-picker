@@ -1,0 +1,33 @@
+.box-loading .spinner {
+    display: inline-block;
+    position: relative;
+    width: 32px;
+    height: 32px
+}
+
+.box-loading .spinner:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgba(66,171,158,0.2);
+    border-radius: 100%
+}
+
+.box-loading .spinner:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border: 2px solid transparent;
+    border-top-color: #42AB9E;
+    border-radius: 100%;
+    -webkit-animation: loaderCircle infinite 0.5s linear;
+    animation: loaderCircle infinite 0.5s linear
+}

@@ -5,6 +5,7 @@
       "copy": "",
       "ctalabel": "Add",
       "ctaAlttext": "",
+      "src": "default1.svg",
       "imgUrl": {
         "320": "abc.jpg",
         "760": "abc.jpg",
@@ -17,6 +18,7 @@
       "copy": "",
       "ctalabel": "Add",
       "ctaAlttext": "",
+      "src": "default.svg",
       "imgUrl": {
         "320": "abc.jpg",
         "760": "abc.jpg",
@@ -29,6 +31,7 @@
       "copy": "",
       "ctalabel": "Add",
       "ctaAlttext": "",
+      "src": "default.svg",
       "imgUrl": {
         "320": "abc.jpg",
         "760": "abc.jpg",

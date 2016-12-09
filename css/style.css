@@ -188,8 +188,8 @@ a {
     width: 50%;
     -webkit-transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
     transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
-    -webkit-transform: translateY(-42px);
-    transform: translateY(-42px); }
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
     .pe-drawer--collection-wrapper.is-open {
       -webkit-transform: translateY(-100%);
       transform: translateY(-100%);
@@ -221,7 +221,8 @@ a {
     display: inline-block;
     padding: 5px 10px 5px 15px;
     background: #eee;
-    border-radius: 20px; }
+    border-radius: 20px;
+    margin-bottom: 5px; }
     .pe-drawer--collection-items--item span {
       display: inline-block;
       color: #333132; }
@@ -237,5 +238,8 @@ a {
   color: #ff6e40;
   margin-right: 7px;
   font-weight: 600; }
+
+.drawer-isopen {
+  transform: translateY(-42px); }
 
 /*# sourceMappingURL=style.css.map */

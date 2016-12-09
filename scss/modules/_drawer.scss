@@ -1,4 +1,11 @@
 // Collection Drawer
+//pe-drawer--collection{
+ // &-is-open{
+   // &-wrapper{
+    //transform: translateY(-42 px);
+    //}
+  //}
+//}
 .pe-drawer--collection {
     background: #fff;
     position: fixed;
@@ -15,8 +22,8 @@
         -webkit-transition: transform 400ms cubic-bezier(0.4,0,0.2,1);
         transition: transform 400ms cubic-bezier(0.4,0,0.2,1);
         // Transform
-        -webkit-transform: translateY(-42px);
-        transform: translateY(-42px);
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
 
         &.is-open {
             -webkit-transform: translateY(-100%);
@@ -64,6 +71,7 @@
         padding: 5px 10px 5px 15px;
         background: #eee;
         border-radius: 20px;
+        margin-bottom: 5px;
         
         span {
             display: inline-block;
@@ -88,4 +96,7 @@
         margin-right: 7px;
         font-weight: 600;
     }
+}
+.drawer-isopen{
+    transform: translateY(-42px);
 }

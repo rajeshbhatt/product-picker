@@ -43,27 +43,29 @@
 								<li>
 									<a class="pe-accordion-h" href="javascript:void(0)">
 										<span>Category 1</span>
-
 										<!-- SVG code -->
 										<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 											viewBox="0 0 40 20" enable-background="new 0 0 40 20" xml:space="preserve">
 											<path id="arrow" fill="none" stroke="#1F2D60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M32.4,4.6 L19.9,15.4L7.4,4.6"
 											/>
 										</svg>
-
 									</a>
 									<div class="pe-accordion-content">
-										<ul class="pe-subcategory">
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-										</ul>
+										<div class="pe-subcategory">
+											<ul class="pe-subcategory--list">
+												<li class="pe-subcategory--item">
+													<a class="pe-subcategory--link" href="javascript:void(0)">Sub Category</a>
+												</li>
+												<li class="pe-subcategory--list-item">
+													<a class="pe-subcategory--link" href="javascript:void(0)">Sub Category</a>
+												</li>
+											</ul>
+										</div>
 									</div>
 								</li>
 								<li>
 									<a class="pe-accordion-h" href="javascript:void(0)">
 										<span>Category 2</span>
-
 										<!-- SVG code -->
 										<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 											viewBox="0 0 40 20" enable-background="new 0 0 40 20" xml:space="preserve">
@@ -73,16 +75,21 @@
 
 									</a>
 									<div class="pe-accordion-content">
-										<ul class="pe-subcategory">
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-										</ul>
+										<div class="pe-subcategory">
+											<ul class="pe-subcategory--list">
+												<li class="pe-subcategory--item">
+													<a class="pe-subcategory--link" href="javascript:void(0)">Sub Category</a>
+												</li>
+												<li class="pe-subcategory--list-item">
+													<a class="pe-subcategory--link" href="javascript:void(0)">Sub Category</a>
+												</li>
+											</ul>
+										</div>
 									</div>
 								</li>
 								<li>
 									<a class="pe-accordion-h" href="javascript:void(0)">
 										<span>Category 3</span>
-
 										<!-- SVG code -->
 										<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 											viewBox="0 0 40 20" enable-background="new 0 0 40 20" xml:space="preserve">
@@ -92,14 +99,16 @@
 
 									</a>
 									<div class="pe-accordion-content">
-										<ul class="pe-subcategory">
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-											<li>Sub Category</li>
-										</ul>
+										<div class="pe-subcategory">
+											<ul class="pe-subcategory--list">
+												<li class="pe-subcategory--item">
+													<a class="pe-subcategory--link" href="javascript:void(0)">Sub Category</a>
+												</li>
+												<li class="pe-subcategory--list-item">
+													<a class="pe-subcategory--link" href="javascript:void(0)">Sub Category</a>
+												</li>
+											</ul>
+										</div>
 									</div>
 								</li>
 							</ul>
@@ -119,12 +128,12 @@
 									<li class="pe-browse-list-item">
 										<div class="pe-browse-item">
 											<div class="pe-browse-item-image">
-												<img class="img-responsive" src="images/default.svg'" />
+												<img class="img-responsive" src="images/<%= listItem.src %>" />
 											</div>
 											<div class="pe-browse-item-title">
-												<p class="item-title">Product Name 1</p>
+												<p>Product Name</p>
 											</div>
-											<div class="pe-browse-item-cta">
+											<div class="pe-browse-item-cta pe-add-product-h">
 												<a class="btn btn-default btn-block" href="javascript:void(0)">add</a>
 											</div>
 										</div>
@@ -146,19 +155,9 @@
 				<span class="pe-variant--text">Products Selected</span>
 			</div>
 			<div class="pe-drawer--collection-content">
-				<ul class="pe-drawer--collection-items--list">
-					<li class="pe-drawer--collection-items--item">
-						<span class="pe-drawer--collection-items--item-name">Product</span>
-						<span class="glyphicon glyphicon-minus pe-delete-h"></span>
-					</li>
-					<li class="pe-drawer--collection-items--item">
-						<span class="pe-drawer--collection-items--item-name">Product Name</span>
-						<span class="glyphicon glyphicon-minus pe-delete-h"></span>
-					</li>
-					<li class="pe-drawer--collection-items--item">
-						<span class="pe-drawer--collection-items--item-name">Product name long</span>
-						<span class="glyphicon glyphicon-minus pe-delete-h"></span>
-					</li>
+				<ul class="pe-drawer--collection-items--list drawer-lists-h">
+					<!--li will be added once user add some product-->
+
 				</ul>
 			</div>
 			<div class="pe-drawer--collection-footer"></div>

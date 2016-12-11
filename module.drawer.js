@@ -17,7 +17,7 @@
 
         };
 
-        _self.drawerTmpl = '<li class=pe-drawer--collection-items--item><span class=pe-drawer--collection-items--item-name>Product</span> <span class="glyphicon glyphicon-minus pe-delete-h"></span></li>';
+        _self.drawerTmpl = '<li class=pe-drawer--collection-items--item><span class="pe-drawer--collection-items--item-name drawer-item-h">Product</span> <span class="glyphicon glyphicon-minus pe-delete-h"></span></li>';
 
         // Module Settings
          if(config)
@@ -32,10 +32,23 @@
         };
 
         _self.addItemsToDrawer = function(e){
-            console.log('thissss',this);
-            _self.domHandlers.drawerPanel.append(_self.drawerTmpl);
-            _self.toggleGridItem();
-            toggleDrawer();
+            var $this = $(this),
+                $elmDiv = $this.closest('.pe-browse-item'),
+                $drawerTmpl = $(_self.drawerTmpl),
+                selectedItemId = $this.attr('data-item-id');
+            if($elmDiv.hasClass('item-selected')){
+                $elmDiv.removeClass('item-selected');
+            }
+            else{
+
+                $elmDiv.addClass('item-selected');
+               $drawerTmpl.attr('item-selected',selectedItemId)
+                          .attr('id',selectedItemId)
+                          .find('.drawer-item-h').html(selectedItemId);
+               _self.domHandlers.drawerPanel.append($drawerTmpl);
+            }
+            openDrawer();
+            updateCount();
         };
         // Popup Handler
         _self.animateDrawerPopup = function() {
@@ -60,16 +73,18 @@
             console.log('tfffff',this);
         };
 
-        var toggleDrawer = function(){
+        var openDrawer = function(){
 
-            $('.pe-drawer--collection-wrapper').toggleClass('drawer-isopen');
-            updateCount();
+            $('.pe-drawer--collection-wrapper').addClass('drawer-isopen');
+
         }
         var updateCount = function(){
             var len = $('.drawer-lists-h li').length;
-            $('.pe-variant--count').html($('.drawer-lists-h li').length);
-            if(length === 0){
-                toggleDrawer();
+            $('.pe-variant--count').html(len);
+            if(len === 0){
+                $('.pe-drawer--collection-wrapper')
+                    .removeClass('drawer-isopen')
+                    .removeClass('is-open');
             }
         };
 

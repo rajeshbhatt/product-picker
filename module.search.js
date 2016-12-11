@@ -27,34 +27,34 @@
 
         // Bind Events
         _self.bindEvents = function() {
-                $(_self.handlers._seachContainer).on('click', _self.searchPattern.bind(this));
+                $(_self.handlers._seachContainer).on('keyup', _self.searchPattern.bind(this));
         };
 
         _self.searchInObject = function(){
-            var _this = this;
-            var pattern = _this.handlers._seachContainer.val();
+            var _this = this,
+                pattern = _this.handlers._seachContainer.val() ? _this.handlers._seachContainer.val().toLowerCase() : '';
             if(!pattern){
                 return false;
             }
-            this.handlers._allProducts.map(function(index,item){
-              var pattern = _this.handlers._seachContainer.val().toLowerCase(),
-                 key = (item.key).toLowerCase();
+
+            _this._allProducts.each(function(){
+                  var key = this.key.toLowerCase();
+
                 if(key.indexOf(pattern) !== -1){
                   this.item.removeClass('hidden');
                 }
                 else {
                   this.item.addClass('hidden');
                 }
-            }).bind($);
+
+            });
           }
 
         _self.prepareIndexing = function(){
-             // this.allProducts = $('#product-list .products');
-
              this._allProducts =  this.handlers._allProducts.map(function(index, item){
                let $this = $(this);
                  return {
-                   key : $this.find('.item-title').html(),
+                   key : $this.find('.title-text').html(),
                    item: $this
                  }
                });

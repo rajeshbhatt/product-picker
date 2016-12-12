@@ -13,8 +13,8 @@
             drawerPanel: $(".drawer-lists-h"),
             drawerHandle: ".pe-collection-drawer-h",
             deleteItemHandler: ".pe-delete-h",
-            addItemHandler: $(".pe-add-product-h")
-
+            addItemHandler: $(".pe-add-product-h"),
+            clearAllHandler: $('#clear-all-h')
         };
 
         _self.drawerTmpl = '<li class=pe-drawer--collection-items--item><span class="pe-drawer--collection-items--item-name drawer-item-h">Product</span> <span class="glyphicon glyphicon-minus pe-delete-h"></span></li>';
@@ -29,22 +29,34 @@
 
             _self.domHandlers.drawerPanel.on('click','.pe-delete-h', _self.deleteItem);
             _self.domHandlers.addItemHandler.on('click',_self.addItemsToDrawer);
+            _self.domHandlers.clearAllHandler.on('click',_self.clearAll);
         };
+        _self.clearAll = function(){
+            //update drawer panel
+            $(_self.domHandlers.drawerPanel).find('li').remove();
+            updateCount();
+            _.each($('#product-list li'), function(item, index){
+                $(item).find('.pe-browse-item').removeClass('item-selected');
 
+            })
+
+        }
         _self.addItemsToDrawer = function(e){
             var $this = $(this),
                 $elmDiv = $this.closest('.pe-browse-item'),
                 $drawerTmpl = $(_self.drawerTmpl),
-                selectedItemId = $this.attr('data-item-id');
+                selectedItemId = $this.attr('data-item-id'),
+                selectedItemTitle = $this.attr('data-item-title');
             if($elmDiv.hasClass('item-selected')){
                 $elmDiv.removeClass('item-selected');
+                _self.domHandlers.drawerPanel.find('#'+ selectedItemId).remove();
             }
             else{
 
                 $elmDiv.addClass('item-selected');
                $drawerTmpl.attr('item-selected',selectedItemId)
                           .attr('id',selectedItemId)
-                          .find('.drawer-item-h').html(selectedItemId);
+                          .find('.drawer-item-h').html(selectedItemTitle);
                _self.domHandlers.drawerPanel.append($drawerTmpl);
             }
             openDrawer();
@@ -60,7 +72,10 @@
 
 
         _self.deleteItem = function(){
-            $(this).parent().remove();
+            var $this = $(this);
+                selectedGridItem = $this.parent().attr('item-selected');
+            $('#grid-'+selectedGridItem).removeClass('item-selected');
+            $this.parent().remove();
             updateCount();
         }
 

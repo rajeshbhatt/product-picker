@@ -124,16 +124,16 @@
 							<div class="col-xs-12" id="product-container-main">
 								<script type="text/template" class="template" id="product-template">
 								<ul class="pe-browse-list" id="product-list">
-									<% _.each( pp.products, function( listItem ){ %>
+									<% _.each( pp.products, function( listItem, index ){ %>
 									<li class="pe-browse-list-item">
-										<div class="pe-browse-item">
+										<div class="pe-browse-item" data-item-id="prod-<%= index %>" id="grid-prod-<%= index %>">
 											<div class="pe-browse-item-image">
 												<img class="img-responsive" src="images/<%= listItem.src %>" />
 											</div>
 											<div class="pe-browse-item-title">
 												<p class="title-text"><%= listItem.title %></p>
 											</div>
-											<div class="pe-browse-item-cta pe-add-product-h" data-item-id="<%= listItem.title %>">
+											<div class="pe-browse-item-cta pe-add-product-h" data-item-title="<%= listItem.title %>" data-item-id="prod-<%= index %>">
 												<a class="btn btn-default btn-block" href="javascript:void(0)">add</a>
 											</div>
 										</div>
@@ -153,6 +153,12 @@
 			<div class="pe-drawer--collection-header pe-collection-drawer-h">
 				<span class="pe-variant--count">2</span>
 				<span class="pe-variant--text">Products Selected</span>
+			</div>
+			<div class="collection-drawer-state-header">
+				<h2 class="collection-drawer-state-header-title collection-drawer-title">
+					Your Selection
+				</h2>
+				<button class="collection-drawer-clear-button md-button" id="clear-all-h" type="button"><span>Clear All</span></button>
 			</div>
 			<div class="pe-drawer--collection-content">
 				<ul class="pe-drawer--collection-items--list drawer-lists-h">

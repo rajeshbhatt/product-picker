@@ -100,3 +100,17 @@
 .drawer-isopen{
     transform: translateY(-42px);
 }
+.collection-drawer-state-header{
+    position: relative;
+    background: #fff;
+}
+.collection-drawer-title{
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+}
+.collection-drawer-clear-button{
+    border: none;
+    border-radius: 4px;
+    margin-left: 10px;
+}
